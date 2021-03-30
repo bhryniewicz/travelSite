@@ -439,7 +439,7 @@ body {
     transition: 0.4s;
   }
   .nav__link a {
-    color: #63DD67;
+    color: #ffffff;
     text-decoration: none;
   }
   .nav__link:nth-child(1) {

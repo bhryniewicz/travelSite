@@ -1,0 +1,189 @@
+body {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  height: 100vh;
+  position: relative;
+}
+
+@import "./header";
+
+.nav__links {
+  display: none;
+}
+
+.main {
+  grid-column: 2/12;
+  display: flex;
+  // align-items: center;
+  font-family: $font;
+  position: relative;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-bottom: 80px;
+  }
+
+  &__paragraph {
+    margin: 35px 0;
+    padding-right: 150px;
+    font-weight: 300;
+    color: $grey;
+    line-height: 150%;
+  }
+
+  &__title {
+    font-size: $big-size;
+    font-weight: 600;
+    padding-right: 100px;
+  }
+
+  &__image {
+    position: absolute;
+    z-index: 10;
+    right: 0;
+    bottom: 28%;
+  }
+
+  &__button {
+    width: 250px;
+    height: 70px;
+    border: none;
+    background-color: $green;
+    color: $white;
+    font-size: $button-size;
+    font-family: $font;
+    font-weight: 600;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    outline: none;
+    
+    a {
+        color: $white;
+        text-decoration: none;
+    }
+  }
+}
+
+@media (max-width: 500px) and (orientation: portrait) {
+  .nav {
+    position: fixed;
+    background-color: $green;
+    height: 100vh;
+    width: 100%;
+    z-index: 999;
+    display: none;
+    animation: entry 0.8s alternate both;
+
+    i {
+      position: absolute;
+      top: 2%;
+      right: 5%;
+      transform: translate(-5%, -5%);
+      font-size: $icons-size;
+      color: $white;
+      cursor: pointer;
+      //   text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+      animation: entryCross 0.7s 0.7s alternate both;
+    }
+
+    &__list {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      list-style: none;
+      color: $white;
+      font-family: $font;
+      font-size: 40px;
+      font-weight: 500;
+    }
+
+    &__link {
+      transition: 0.4s;
+      //   text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+
+      &:nth-child(1) {
+        animation: entryWord 0.5s 0.6s alternate both ease-in-out;
+      }
+
+      &:nth-child(2) {
+        animation: entryWord 0.5s 0.8s alternate both ease-in-out;
+      }
+
+      &:nth-child(3) {
+        animation: entryWord 0.5s 1s alternate both;
+      }
+
+      &:hover {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .main {
+    margin-top: 20px;
+
+    &__content {
+      width: 100%;
+      align-items: center;
+    }
+
+    &__title {
+      font-size: 38px;
+      margin: 0;
+      padding-right: 30px;
+    }
+
+    &__image {
+      display: none;
+    }
+
+    &__paragraph {
+      padding-right: 75px;
+      margin: 45px 0;
+    }
+
+    &__button {
+      width: 100%;
+    }
+  }
+}
+
+
+@keyframes entry {
+  from {
+    transform: translateX(500px);
+  }
+
+  to {
+    transform: translate(0);
+  }
+}
+
+@keyframes entryWord {
+  from {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes entryCross {
+  from {
+    transform: rotate(360deg);
+    opacity: 0;
+  }
+
+  to {
+    transform: rotate(0);
+    opacity: 1;
+  }
+}

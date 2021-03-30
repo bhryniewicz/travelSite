@@ -1,0 +1,257 @@
+body {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  height: 100vh;
+}
+
+.green {
+  color: $green;
+}
+
+.download {
+  grid-column: 2/12;
+  font-family: $font;
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+
+  &__introduction,
+  &__image {
+    width: 50%;
+  }
+
+  &__introduction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  &__image {
+    width: 400px;
+  }
+
+  &__title {
+    font-size: $big-size;
+    font-weight: 500;
+  }
+
+  &__paragraph {
+    padding-right: 50px;
+    margin-top: 30px;
+    font-weight: 300;
+    line-height: 150%;
+  }
+}
+
+.image__animation {
+  margin-top: 40px;
+  height: 30vh;
+  grid-column: 2/12;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .svg {
+    width: 40px;
+    transform: rotate(90deg);
+    animation: loading 1s infinite ease-in-out;
+  }
+
+  .svg1 {
+    transform: rotate(90deg);
+    animation: loading1 1s infinite ease-in-out;
+  }
+}
+
+@keyframes loading {
+  from {
+    opacity: 0;
+    transform: rotate(90deg) translateX(0);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(90deg) translateX(5px);
+  }
+}
+
+@keyframes loading1 {
+  from {
+    opacity: 0;
+    transform: rotate(90deg) translateX(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(90deg) translateX(20px);
+  }
+}
+
+.boxes {
+  grid-column: 2/12;
+  height: 70vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  //   justify-content: center;
+  font-family: $font;
+  margin-top: 40px;
+
+  &__title {
+    font-weight: 400;
+    font-size: $big-size;
+  }
+
+  &__container {
+    display: flex;
+    height: 30vh;
+    align-items: center;
+    margin-top: 100px;
+  }
+
+  &__box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0 40px;
+    height: 150px;
+    width: 150px;
+    border: 8px solid $green;
+    border-radius: 20px;
+    color: $green;
+    cursor: pointer;
+    box-shadow: none;
+
+    transition: 0.3s;
+
+    &::before {
+      content: "\2193";
+      display: block;
+      position: absolute;
+      font-size: 50px;
+      top: -80px;
+      opacity: 0;
+    }
+
+    &:hover::before {
+      animation: arrowDown 0.7s infinite ease-in-out;
+    }
+
+    &:hover {
+      //   box-shadow: 5px 6px 0 0 rgba(99, 221, 103, 0.7);
+      transform: scale(1.1);
+    }
+
+    i {
+      font-size: 36px;
+      padding: 0 0 20px 0;
+    }
+  }
+
+  &__name {
+    font-weight: 400;
+    font-size: $button-size;
+  }
+}
+
+@keyframes arrowDown {
+  from {
+    top: -80px;
+    opacity: 0;
+  }
+
+  to {
+    top: -70px;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 401px) and (orientation: portrait) {
+  .download {
+    margin: 0;
+    // height: 90vh;
+    flex-direction: column;
+
+    &__introduction,
+    &__image {
+      width: 100%;
+    }
+
+    &__introduction {
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    &__title {
+      position: relative;
+      font-size: 30px;
+      margin: 20px 0 0 0;
+    }
+
+    &__image {
+      padding: 30px 0 0 0;
+      margin-top: 20px;
+      max-width: 400px;
+    }
+
+    &__paragraph {
+      display: none;
+    }
+  }
+
+  .image__animation {
+    padding-top: 30px;
+    justify-content: flex-start;
+
+    img {
+      cursor: pointer;
+    }
+  }
+
+  .boxes {
+    height: 100vh;
+    &__title {
+      //    font-weight: 400;
+      font-size: 26px;
+      position: relative;
+    }
+
+    &__container {
+      flex-direction: column;
+      height: 85vh;
+      margin-bottom: 20px;
+      margin-top: 50px;
+    }
+
+    &__box {
+      margin: 20px 0;
+      border: 5px solid $green;
+      &::before {
+        display: none;
+      }
+
+      i {
+        font-size: 48px;
+      }
+    }
+  }
+
+  .boxes__title::before,
+  .download__title::before {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    content: "";
+    display: block;
+    width: 110%;
+    height: 3px;
+    background-color: $green;
+  }
+}
